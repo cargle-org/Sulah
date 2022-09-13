@@ -1,0 +1,1 @@
+export { StyledButtons } from './index.styled'
