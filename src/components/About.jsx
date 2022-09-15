@@ -3,11 +3,11 @@ import { useColorMode } from '@chakra-ui/react'
 import { StyledButtons } from '../atoms/styled-buttons'
 import ArrowIcon from './ArrowIcon'
 
-function About() {
+function About(props) {
 
     const { colorMode } = useColorMode()
   return (
-   <AboutStyles className={colorMode} id='about' >
+   <AboutStyles className={colorMode} id='about' style={props.style} >
     <h1 className='section' id='about'>About us</h1>
     <div className="about-content">
         <h3 className="about-content-heading">
@@ -23,7 +23,7 @@ function About() {
         86, Allen avenue, Ikeja, Lagos where it provides foreign exchange services to  both corporates and individuals.
         </p>
         <div className="about-button-group">
-        <StyledButtons className={colorMode === 'light' ? 'light-btn' : 'dark-btn'}>TRADE NOW <ArrowIcon fill='white' /> </StyledButtons>
+        <StyledButtons onClick={props.openTrade} className={colorMode === 'light' ? 'light-btn' : 'dark-btn'}>TRADE NOW <ArrowIcon fill='white' /> </StyledButtons>
          <StyledButtons  className={colorMode === 'light' ? 'default-light-btn' : 'default-dark-btn'}>HOW IT WORKS <ArrowIcon fill="black" /></StyledButtons>
         </div>
     </div>

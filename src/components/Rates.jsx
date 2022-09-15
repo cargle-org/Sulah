@@ -8,7 +8,7 @@ import USA from '../assets/images/USA.png'
 import Euro from '../assets/images/Euro.png'
 import miniClock from '../assets/svg/mini-clock.svg'
 
-function Rates() {
+function Rates(props) {
     const [brandRates, setBrandRates] = useState(true);
 
     const handleRates = () =>{
@@ -19,7 +19,7 @@ function Rates() {
     }
 
   return (
-    <RatesStyles>
+    <RatesStyles style={props.style}>
         <div className="rates-wrapper">
             <h2>
                 Rates Table

@@ -13,35 +13,40 @@ function LocationCard(props) {
         setOpenLocationCard(!openLocationCard)
     }
 
+
   return (
     <LocationCardStyles onClick={handleCardOpening}>
    {openLocationCard ?  <>
-    <img src={cardImg} alt="img"  />
-        <h2>Head office</h2>
+    <img src={props.src} alt="img"  />
+        <h2>{props.title}</h2>
         <div className="location card-info">
         <img src={pin} alt="icon" />
-        <p>86, Allen Avenue, Ikeja, Lagos Nigeria</p>
+        <p>{props.address}</p>
         </div>
         <div className="contact card-info">
         <img src={miniPhone} alt="icon" />
-        <p>0815 064 6739, 0807 759 3664</p>
+        <p>{props.phone}</p>
         </div>
         <div className="open-info">
         <div className="time card-info">
         <img src={clock} alt="icon" />
-        <p>24 Hrs</p>
+        <p>{props.hours}</p>
+        </div>
+        <div className="time card-info">
+        <img src={clock} alt="icon" />
+        <p>{props.time}</p>
         </div>
         <div className="open card-info">
         <img src={openTime} alt="icon" />
-        <p>Monday to friday</p>
+        <p>{props.days}</p>
         </div>
         </div>
         </> : 
         <>
-        <h2>Head office</h2>
+        <h2>{props.title}</h2>
         <div className="location card-info">
         <img src={pin} alt="icon" />
-        <p>86, Allen Avenue, Ikeja, Lagos Nigeria</p>
+        <p>{props.address}</p>
         </div>
         </>}
     </LocationCardStyles>

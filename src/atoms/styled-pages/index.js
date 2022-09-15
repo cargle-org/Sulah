@@ -9,5 +9,17 @@ export {
          LocationCardStyles,
          ContactStyles,
          ContactWrapper,
-         ContactFormWrapper
+         ContactFormWrapper,
+         TradeContainer,
+         TradeHeader,
+         TradeWrapper,
+         TradeType,
+         TradeForm,
+         InputGroup,
+         SelectContainer,
+         SelectWrapper,
+         SelectInput,
+         SelectContent,
+         ModalContents,
+         ModalHeaderContents
         } from './index.styled'

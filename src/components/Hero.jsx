@@ -3,8 +3,8 @@ import { HeroStyles } from '../atoms/styled-pages'
 import { useColorMode} from '@chakra-ui/react'
 import ArrowIcon from './ArrowIcon'
 import { StyledButtons } from '../atoms/styled-buttons'
-import redLogo from '../assets/images/red-logo.png'
-import greenLogo from '../assets/images/green-logo.png'
+import redLogo from '../assets/svg/redLogo.svg'
+import greenLogo from '../assets/svg/greenLogo.svg'
 import Britain from '../assets/images/Britain.png'
 import Canada from '../assets/images/Canada.png'
 import Japan from '../assets/images/Japan.png'
@@ -24,7 +24,7 @@ import miniPhone from '../assets/svg/mini-phone.svg'
 import miniClock from '../assets/svg/mini-clock.svg'
 import miniLocation from '../assets/svg/mini-location.svg'
 
-function Hero() {
+function Hero(props) {
     const {colorMode} = useColorMode()
 
     const imagesArray = [img1,img2,img3,img4,img5,img6,img7,img8] 
@@ -37,7 +37,6 @@ useEffect(() => {
         if(index < imagesArray.length){
           img.src = imagesArray[index]; 
           index++;  
-        //   console.clear();
         } else {
           index = 0; 
         }
@@ -50,11 +49,11 @@ useEffect(() => {
 
 
   return (
-    <HeroStyles className={colorMode} >
+    <HeroStyles className={colorMode} style={props.style} >
        <div className="hero-wrapper section" id='home'>
        <div className="hero-left">
             <div className="hl-logo">
-                {colorMode === 'light' ? <img src={greenLogo} alt="logo" /> : <img src={redLogo} alt="logo" /> }
+                {colorMode === 'light' ? <img src={redLogo} alt="logo" /> : <img src={greenLogo} alt="logo" /> }
                <h2 className="brand-name">SULAH BDC</h2>     
             </div>
             <h1 className="hl-heading">
@@ -85,7 +84,7 @@ useEffect(() => {
                 </div>
                 </div>
             <div className="hl-buttons">
-                <StyledButtons className={colorMode === 'light' ? 'light-btn' : 'dark-btn'}>TRADE NOW <ArrowIcon fill='white' /> </StyledButtons>
+                <StyledButtons onClick={props.openTrade} className={colorMode === 'light' ? 'light-btn' : 'dark-btn'}>TRADE NOW <ArrowIcon fill='white' /> </StyledButtons>
                 <StyledButtons  className={colorMode === 'light' ? 'default-light-btn' : 'default-dark-btn'}>HOW IT WORKS <ArrowIcon fill="black"/></StyledButtons>
             </div>
         </div>
@@ -93,7 +92,7 @@ useEffect(() => {
             <img src={img1} alt="images" id='looping-img' />
         </div>
        </div>
-       <div className="hero-card-wrapper">
+       <div className="hero-card-wrapper" style={props.style}>
         <div className="hero-card">
             <div className="time">
                 <img src={miniClock} alt="icon" />

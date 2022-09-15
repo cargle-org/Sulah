@@ -7,9 +7,9 @@ import firstLogo from '../assets/images/first-bank.png'
 import stanbicLogo from '../assets/images/stanbic-bank.png'
 
 
-function Patners() {
+function Patners(props) {
   return (
-   <PartnerStyles>
+   <PartnerStyles style={props.style}>
    <div className="partners-wrapper">
    <h1>Our Partners</h1>
     <div className="partners">

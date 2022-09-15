@@ -17,7 +17,7 @@ function MobileHeader(props) {
                     <a href='#contact' className='navLink contact' onClick={props.onClick}>Contact us</a>
                 </div>
                 <div className="nav-button">
-                    <StyledButtons onClick={props.onClick} className={colorMode}>TRADE NOW <ArrowIcon fill='white' className='arrow-icon' /> </StyledButtons>
+                    <StyledButtons onClick={props.openTrade}  className={colorMode}>TRADE NOW <ArrowIcon fill='white' className='arrow-icon' /> </StyledButtons>
                     <Button onClick={props.onClick} className='default-btn'>CALCULATE CURRENCY <ArrowIcon fill='black' className='arrow-icon' /></Button>
                 </div>
             </div>

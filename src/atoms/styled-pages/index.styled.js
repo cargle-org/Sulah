@@ -5,10 +5,12 @@ import redAboutBg from '../../assets/images/red-about-bg.png'
 import greenAboutBg from '../../assets/images/green-about-bg.png'
 import greenBG from '../../assets/images/greenBg.png'
 
-export const LandingPage = styled.div`
+
+export const LandingPage = styled.section`
     // padding: 2rem 4rem;
     position: relative;
     font-family: 'Montserrat', sans-serif;
+
 `
 
 export const HeroStyles =styled.section`
@@ -299,6 +301,12 @@ position: relative;
                 .hl-logo{
                     width: fit-content;
                     margin: 0 auto;
+                    img{
+                        width: 60px;
+                    }
+                    .brand-name{
+                        font-size: 1.8rem;
+                    }
                 }
                 .hl-heading{
                     font-size: 2.5rem;
@@ -1130,23 +1138,10 @@ h1{
                      span{
                         margin: 0 .5rem;
                      }
-                    button{
+                    a{
                         margin-top: .5rem;
                         white-space: nowrap;
-                        display: flex;
-                        align-items: center;
-                        border-radius: 50px;
                         padding: .5rem 1rem;
-                            font-weight: 500;
-                            font-size: .7rem;
-                            svg{
-                                width: 12px;
-                                height: 12px;
-                                margin-left: .5rem;
-                                path{
-                                    fill: white;
-                                }
-                            }
                             &.light{
                                 background-color: #12613F;
                                 color: white;
@@ -1214,6 +1209,11 @@ h1{
 
                   .location-cards{
                     margin-right: 1rem;
+                        .msg{
+                            margin: 1rem 0;
+                            font-weight: 600;
+                            color: #A19B9D;
+                        }
                   }
             }
         }
@@ -1308,6 +1308,9 @@ export const LocationCardStyles = styled.div`
     .open-info{
         display: flex;
         align-items: center;
+        width: fit-content;
+        white-space: nowrap;
+        flex-wrap: wrap;
         .card-info{
             display: flex;
             align-items: center;
@@ -1316,7 +1319,7 @@ export const LocationCardStyles = styled.div`
             padding:.3rem .5rem;
             font-size: .7rem;
             font-weight: 500;
-            margin-top: 0;
+            margin-top: .5rem;
             margin-bottom: 0;
             color: #A19B9D;
             img{
@@ -1420,13 +1423,13 @@ align-items: center;
         flex-wrap: wrap;
         width: fit-content;
     }
-    button.light{
+    a.light{
         background: #12613F;
         box-shadow: 0px 3.23678px 8.09196px 4.04598px rgba(0, 0, 0, 0.05);
         border-radius: 40.4598px;
         margin: .5rem .5rem .5rem 0;
     }
-    button.dark{
+    a.dark{
         background: #BE343E;
         box-shadow: 0px 3.23678px 8.09196px 4.04598px rgba(0, 0, 0, 0.05);
         border-radius: 40.4598px;
@@ -1476,30 +1479,47 @@ align-items: center;
 export const ContactFormWrapper = styled.form`
 width: 70%;
 margin: 0 auto;
-.input-group{
-    display: flex;
-    align-items: start;
-    background-color: #FFFFFF;
-    border: 1px solid #E2E2E2;
-    border-radius: 5px;
+
+.input-wrapper{
+    width: 100%;
     margin-bottom: 1rem;
-    img{
-        padding: .5rem 1rem;
-        object-fit: contain;
-    }
-    input, textarea{
+    .input-group{
+        display: flex;
+        align-items: start;
         background-color: #FFFFFF;
+        border: 1px solid #E2E2E2;
+        border-radius: 5px;
+        
+        img{
+            padding: .5rem 1rem;
+            object-fit: contain;
+        }
+        input, textarea{
+            background-color: #FFFFFF;
+            width: 100%;
+            padding: .5rem;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            color: black;
+            &.error{
+                outline: 2px solid yellow;
+            }
+            &::placeholder{
+                color: #909090;
+            }
+            &:focus{
+                outline: 1px solid #F2E0E1;
+            }
+        }
+    }
+    .errorText{
+        font-size: .7rem;
+        color: yellow;
         width: 100%;
-        padding: .5rem;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        color: black;
-        &::placeholder{
-            color: #909090;
-        }
-        &:focus{
-            outline: 1px solid #F2E0E1;
-        }
+        text-align: left;
+        font-weight: 600;
+        display: block;
+        margin-top: .3rem;
     }
 }
 button{
@@ -1518,4 +1538,296 @@ button{
 @media (max-width: 420px){
     width: 90%;
 }
+`
+
+export const TradeContainer = styled.section`
+height: 100vh;
+position: fixed;
+top: 0;
+right: 0;
+width: 0;
+box-shadow: 0px 4.59453px 17.2295px 6.8918px rgba(0, 0, 0, 0.05);
+background-color: white;
+z-index: 15;
+transition: all 250ms ease-in;
+&.show{
+    width: 50%;
+}
+h1{
+    font-size: 2rem;
+    font-weight: 700;
+    color: black;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+@media (max-width: 768px){
+    &.show{
+        width: 75%;
+    }
+}
+@media (max-width: 500px){
+    &.show{
+        width: 100%;
+    }
+    h1{
+        font-size: 1.5rem;
+    }
+}
+`
+export const TradeHeader = styled.div`
+color: white;
+padding: 1.5rem 3rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+&.light{
+    background-color: #1B9260;
+}
+&.dark{
+    background-color: #E04447;
+}
+.heading{
+    display: flex;
+    align-items: center;
+    img{
+        width: 30px;
+        margin-right: .5rem;
+        cursor: pointer;
+    }
+    h2{
+        font-weight: 600;
+    }
+}
+@media (max-width: 500px){
+   padding: 1.5rem 1rem;
+}
+`
+export const TradeWrapper = styled.div`
+padding: 0 1rem;
+text-align: center;
+color: black;
+width: 50%;
+height: 50vh;
+overflow-y: auto;
+margin: 0 auto;
+@media (max-width: 500px){
+    width: 70%;
+}
+`
+
+export const TradeType = styled.div`
+ margin: 1rem auto;
+ color: #7D7D7D;
+ width: fit-content;
+ background-color: #F7FAFF;
+ border: 1px solid #F1F1F1;
+ border-radius: 26px;
+ padding: .2rem;
+ display: flex;
+ align-items: center;
+ cursor: pointer;
+ p{
+    width: fit-content;
+    padding: .3rem 1rem;
+    font-size: 1.1rem
+ }
+ .buy,.sell{
+    background-color: white;
+    font-weight: 700;
+    box-shadow: 0px 4.59453px 17.2295px 6.8918px rgba(0, 0, 0, 0.05);
+    border-radius: 100px;
+    color: black;
+ }
+`
+
+export const TradeForm = styled.form`
+margin: 0 auto;
+width: 100%;
+border-bottom: 1px solid #DEE6E2;
+.trade-btn{
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    border-top: 1px solid #DEE6E2;
+    button{
+        width: fit-content;
+        margin: 0 auto;
+        font-weight: 600;
+        color: white;
+        border: 1px solid #CBD5E1;
+        border-radius: 50px;
+        &.light{
+            background-color: #1B9260;
+        }
+        &.dark{
+            background-color: #A1272E;
+        }
+        &:disabled{
+            opacity: 0.5;
+        }
+    }
+}
+
+
+`
+export const InputGroup = styled.div`
+margin: 1rem 0;
+label{
+    color: #0D0D26;
+    display: block;
+    text-align: left;
+    margin-bottom: .5rem;
+    font-size: .7rem
+}
+.naira-input{
+    background: #EEEFEF;
+    border: 1px solid #AAAAAA;
+    text-align: left;
+    padding: .6rem;
+    border-radius: 5px;
+    font-size: .8rem;
+    }
+    .errorText{
+        font-size: .5rem;
+        color: red;
+        width: 100%;
+        text-align: left;
+    }
+.input{
+    width: 100%;
+    background-color:white;
+    border: 1px solid #AAAAAA;
+    border-radius: 5px;
+    color: #0D0D26;
+   
+    span{
+        padding: 0 1rem;
+    }
+    input {
+        width: 100%;
+        padding: .6rem;
+        background-color:white !important;
+        border-radius: 5px;
+        font-size: .8rem;
+        color: #0D0D26;
+        &.error{
+            outline: 1px solid red;
+        }
+        &:focus{
+            outline: 0;
+            background-color:white;
+        }
+    }
+}
+`
+
+export const SelectContainer = styled.div`
+    width: 100%;
+`
+export const SelectWrapper = styled.div`
+`
+export const SelectInput = styled.div`
+width: 100%;
+background-color:white;
+border: 1px solid #AAAAAA;
+border-radius: 5px;
+padding: .5rem .7rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+cursor: pointer;
+font-size: .8rem;
+color: #0D0D26;
+&.error{
+    border: 1px solid red;
+}
+li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    img{
+         margin-right: .5rem;
+         width: 30px;
+    }
+}
+svg{
+    transition: transform 0.3s linear;
+}
+
+&#show{
+    svg{
+        transform: rotate(-180deg);
+    }
+}
+`
+ 
+export const SelectContent = styled.div`
+ padding: .2rem 0;
+ background-color: white;
+ border: 1px solid #DEE6E2;
+ max-height: 200px;
+ overflow-y: scroll;
+ display: none;
+ &.show{
+    display: block;
+ }
+ ::-webkit-scrollbar{
+    width: 7px;
+ }
+ ::-webkit-scrollbar-track{
+    background: #f1f1f1;
+    border-radis: 25px;
+ }
+
+ ::-webkit-scrollbar-thumb{
+    background: #ccc;
+    border-radius: 25px;
+ }
+ ul{
+    cursor: pointer;
+    li{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #DEE6E2;
+        img{
+             margin-right: .5rem;
+             width: 50px;
+             padding:  1rem .5rem;
+        }
+        &:hover{
+            background-color: #f2f2f2;
+        }
+    }
+ }
+`
+export const ModalContents = styled.div`
+text-align: center;
+width: 100%;
+padding:0 0 1rem 0;
+border-bottom: 1px solid #DBDBDB;
+img{
+    margin: 1rem auto;
+}
+h1{
+  font-weight: 700;
+  font-size: 1.2rem;  
+  width: 80%;
+  margin: .5rem auto;
+}
+p{
+    width: 80%;
+    font-size: .8rem;
+    margin: .5rem auto;
+}
+`
+export const ModalHeaderContents = styled.div`
+border-bottom: 1px solid #DBDBDB;
+ h1{
+    font-weight: 600;
+    width: fit-content;
+    margin: 0 auto;
+    padding-bottom: .5rem;
+ }
 `

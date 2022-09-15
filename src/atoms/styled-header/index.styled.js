@@ -8,6 +8,9 @@ font-family: 'Montserrat', sans-serif;
 z-index: 10;
 position: fixed;
 width: 100%;
+&.opaque{
+    opacity: 0.3;
+}
 .header-wrapper{
     display: flex;
     justify-content: space-between;
@@ -109,6 +112,10 @@ width: 100%;
             font-size: 2rem;
         }
     }
+}
+
+@media (max-width: 798.98px){
+    padding: 1.5rem 1rem;
 }
 `
 

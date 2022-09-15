@@ -1,29 +1,32 @@
 import { ContactStyles, ContactWrapper } from "../atoms/styled-pages"
 import { useColorMode} from '@chakra-ui/react'
 import ArrowIcon from "./ArrowIcon"
-import { StyledButtons } from "../atoms/styled-buttons"
+import { StyledButtonLinks } from "../atoms/styled-buttons"
 import ContactForm from "./ContactForm"
 
-function Contact() {
+function Contact(props) {
     const { colorMode } = useColorMode()
     return(
-  <ContactWrapper  className="section" id="contact">
+  <ContactWrapper  style={props.style} className="section" id="contact">
     <h1 >Contact Us ?</h1>
     <ContactStyles className={colorMode}>
         <div className="left">
             <h2>
             Do you have any enquiries, comments & questions ? 
             </h2>
-            <StyledButtons className={colorMode}>
+            {/* <StyledButtons className={colorMode}>
                 Request a call <ArrowIcon />
-            </StyledButtons>
+            </StyledButtons> */}
             <div className="cl-btns">
-            <StyledButtons className={colorMode}>
+            <StyledButtonLinks className={colorMode} href='tel:+2348150646739'>
+                Request a call <ArrowIcon />
+            </StyledButtonLinks>
+            <StyledButtonLinks className={colorMode} href='mailto:info@sulahbdc.com'>
                 Write Us <ArrowIcon />
-            </StyledButtons>
-            <StyledButtons className={colorMode}>
+            </StyledButtonLinks>
+            {/* <StyledButtons className={colorMode}>
                 Let's Chat on Whatsapp <ArrowIcon />
-            </StyledButtons>
+            </StyledButtons> */}
             </div>
         </div>
         <div className="right">
