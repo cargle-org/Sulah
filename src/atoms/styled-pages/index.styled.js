@@ -10,7 +10,7 @@ export const LandingPage = styled.section`
     // padding: 2rem 4rem;
     position: relative;
     font-family: 'Montserrat', sans-serif;
-
+    scroll-behaviour: smooth;
 `
 
 export const HeroStyles =styled.section`
