@@ -6,7 +6,7 @@ import Japan from '../assets/images/Japan.png'
 import Nigeria from '../assets/images/Nigeria.png'
 import USA from '../assets/images/USA.png'
 import Euro from '../assets/images/Euro.png'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import List from './List'
 
 export default function SelectCurrency(props) {

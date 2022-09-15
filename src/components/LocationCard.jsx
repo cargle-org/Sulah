@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { LocationCardStyles } from "../atoms/styled-pages"
-import cardImg from '../assets/images/LocationCardImg.png'
 import pin from '../assets/svg/mini-location.svg'
 import miniPhone from '../assets/svg/mini-phone.svg'
 import clock from '../assets/svg/mini-clock.svg'
