@@ -1,47 +1,49 @@
 import { BiCaretDown } from 'react-icons/bi'
 import { SelectContainer, SelectWrapper,  SelectInput, SelectContent } from '../atoms/styled-pages'
-import Britain from '../assets/images/Britain.png'
-import Canada from '../assets/images/Canada.png'
-import Japan from '../assets/images/Japan.png'
-import Nigeria from '../assets/images/Nigeria.png'
+// import Britain from '../assets/images/Britain.png'
+// import Canada from '../assets/images/Canada.png'
+// import Japan from '../assets/images/Japan.png'
+// import Nigeria from '../assets/images/Nigeria.png'
 import USA from '../assets/images/USA.png'
-import Euro from '../assets/images/Euro.png'
-import { useState } from 'react'
+// import Euro from '../assets/images/Euro.png'
+import { useState, useContext} from 'react'
 import List from './List'
+import RatesContext from '../context/RatesProvider'
 
 export default function SelectCurrency(props) {
-const [selectClick, setSelectClick] = useState(false)
+const [selectClick, setSelectClick] = useState(false);
+const {rates} = useContext(RatesContext)
 
     const handleClick= () => {
         setSelectClick(!selectClick)
     }
 
-    let currencies = [
-        {
-        currency: 'USD',
-        src:`${USA}`
-        },
-        {
-        currency: 'GBP',
-        src:`${Britain}`
-        },
-        {
-        currency: 'EUR',
-        src:`${Euro}`
-        },
-        {
-        currency: 'JPY',
-        src:`${Japan}`
-        },
-        {
-        currency: 'CAD',
-        src:`${Canada}`
-        },
-        {
-        currency: 'NGN',
-        src:`${Nigeria}`
-        }
-]
+//     let currencies = [
+//         {
+//         currency: 'USD',
+//         src:`${USA}`
+//         },
+//         {
+//         currency: 'GBP',
+//         src:`${Britain}`
+//         },
+//         {
+//         currency: 'EUR',
+//         src:`${Euro}`
+//         },
+//         {
+//         currency: 'JPY',
+//         src:`${Japan}`
+//         },
+//         {
+//         currency: 'CAD',
+//         src:`${Canada}`
+//         },
+//         {
+//         currency: 'NGN',
+//         src:`${Nigeria}`
+//         }
+// ]
 // const addCurrency = () => {
 // Currencies.forEach((data) => {
 //    console.log(data)
@@ -76,8 +78,8 @@ const updateCurrency = (e) => {
     </SelectWrapper>
     <SelectContent className={selectClick ? 'show' : ''}>
         <ul className="options">
-            {currencies.map((data, index) => <List onClick={updateCurrency} key={index} src={data.src} b={
-                data.currency} />)}
+            {rates.map((data, index) => <List onClick={updateCurrency} key={index} src={data.image} b={
+                data.abbreviation} />)}
         </ul>
     </SelectContent>
     </SelectContainer>

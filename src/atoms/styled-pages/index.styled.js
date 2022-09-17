@@ -528,15 +528,15 @@ border-bottom: 2px solid #F2E0E1;
                             overflow: hidden;
                             margin-right: .5rem;
                             display: flex;
-                            align-item: center;
+                            align-items: center;
                             justify-content: center;
                             &:hover{
                                 img{
-                                    transform: scale(1.6);
+                                    transform: scale(2.5);
                                 }
                             }
                             img{
-                                transform: scale(1.1);
+                                transform: scale(1.5);
                                 transition: all 250ms ease-in;
                             }
                         }

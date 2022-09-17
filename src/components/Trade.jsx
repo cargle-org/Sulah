@@ -59,11 +59,11 @@ export default function Trade(props) {
         }),
         onSubmit: function (values, {resetForm}) {
             setisLoading(true)
+            console.log(values)
            axios.post('https://sulah-api.herokuapp.com/api/requestTrade', values)
            .then(function(response){
             setisLoading(false)
             resetForm();  
-            setNaira('0')
             props.onClick();
             onOpen();
            })
@@ -97,7 +97,7 @@ useEffect(() => {
         } 
         return rate
     })
-}, [amount, currency, rates, tradeType])
+}, [amount, currency, rates, tradeType, naira])
 
   return (
     <>

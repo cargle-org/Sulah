@@ -23,6 +23,8 @@ function Rates(props) {
     const handleCBNRates = () =>{
         setBrandRates(false)
     }
+
+    
   return (
     <RatesStyles style={props.style}>
         <div className="rates-wrapper">
@@ -51,7 +53,7 @@ function Rates(props) {
                 </thead>
                 <tbody>
                    {rates.map((rate, index) => 
-                   <RatesRow key={index} name={rate.name.toUpperCase()} abbreviation={rate.abbreviation}  buy={rate.buy_rate} sell={rate.sell_rate} />)}
+                   <RatesRow key={index} name={rate.name.toUpperCase()} img={rate.image} abbreviation={rate.abbreviation}  buy={rate.buy_rate} sell={rate.sell_rate} />)}
                 </tbody>
             </table> }
                 </> :
