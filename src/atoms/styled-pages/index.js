@@ -21,5 +21,9 @@ export {
          SelectInput,
          SelectContent,
          ModalContents,
-         ModalHeaderContents
+         ModalHeaderContents,
+         WarningContainer, 
+         WarningWrapper,
+         PrivacyContainer,
+         PrivacyWrapper
         } from './index.styled'

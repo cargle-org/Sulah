@@ -8,6 +8,7 @@ font-family: 'Montserrat', sans-serif;
 z-index: 10;
 position: fixed;
 width: 100%;
+opacity: 0.9;
 &.opaque{
     opacity: 0.3;
 }

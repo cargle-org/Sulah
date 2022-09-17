@@ -3,7 +3,7 @@ import redIcon from '../assets/svg/red-mode.svg'
 import greenIcon from '../assets/svg/green-mode.svg'
 import ArrowIcon from './ArrowIcon'
 import { StyledHeader } from '../atoms/styled-header'
-import {useColorMode, Button} from '@chakra-ui/react'
+import {useColorMode} from '@chakra-ui/react'
 import { StyledButtons } from '../atoms/styled-buttons'
 import { HiMenuAlt1 } from 'react-icons/hi'
 
@@ -47,7 +47,7 @@ useEffect(() => {
                 </div>
                 <div className="nav-buttons">
                     <StyledButtons onClick={props.openTrade} className={colorMode}>TRADE NOW <ArrowIcon fill='white' className='arrow-icon' /> </StyledButtons>
-                    <Button className='default-btn'>CALCULATE CURRENCY <ArrowIcon fill='black' className='arrow-icon' /></Button>
+                    {/* <Button className='default-btn'>CALCULATE CURRENCY <ArrowIcon fill='black' className='arrow-icon' /></Button> */}
                 </div>
             </div>
             <HiMenuAlt1 className='menu-toggle' onClick={props.onClick}/>

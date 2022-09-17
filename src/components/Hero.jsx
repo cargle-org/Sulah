@@ -96,15 +96,15 @@ useEffect(() => {
         <div className="hero-card">
             <div className="time">
                 <img src={miniClock} alt="icon" />
-                <p>10AM - 10PM</p>
+                <a href='#locate'>24 hours</a>
             </div>
             <div className="contact">
             <img src={miniPhone} alt="icon" />
-                <p>0815 064 6739, 0807 759 3664</p>
+                <a href='tel:+2348150646739'>0815 064 6739, 0807 759 3664</a>
             </div>
             <div className="location">
             <img src={miniLocation} alt="icon" />
-                <p><b>Head Office</b> 86, Allen Avenue, Ikeja, Lagos Nigeria</p>
+                <a href='#locate'><b>Head Office</b> 86, Allen Avenue, Ikeja, Lagos Nigeria</a>
             </div>
         </div>
        </div>

@@ -19,7 +19,7 @@ function Contact(props) {
             </StyledButtons> */}
             <div className="cl-btns">
             <StyledButtonLinks className={colorMode} href='tel:+2348150646739'>
-                Request a call <ArrowIcon />
+                Call Us <ArrowIcon />
             </StyledButtonLinks>
             <StyledButtonLinks className={colorMode} href='mailto:info@sulahbdc.com'>
                 Write Us <ArrowIcon />

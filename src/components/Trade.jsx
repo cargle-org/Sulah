@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useContext, useEffect } from "react"
 import { TradeContainer, TradeHeader, TradeType, TradeWrapper, TradeForm, InputGroup } from "../atoms/styled-pages"
 import redArrow from '../assets/svg/redArrow.svg'
 import greenArrow from '../assets/svg/greenArrow.svg'
@@ -10,32 +10,40 @@ import { useFormik } from 'formik'
 import * as yup from 'yup';
 import { useToast, useDisclosure } from '@chakra-ui/react'
 import SuccessModal from "./SuccessModal"
+import RatesContext from "../context/RatesProvider"
+import axios from 'axios'
+import Loading from "./Loading"
+
 
 export default function Trade(props) {
-
+    const {rates} = useContext(RatesContext);
+    const [isLoading, setisLoading] = useState(false)
     const { colorMode } = useColorMode();
     const [tradeType, setTradeType] = useState('buy')
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const [naira, setNaira] = useState('0')
     // const [isLoading, setisLoading] = useState(false)
     const sellTrade = ()=> {
         setTradeType('sell')
+        formik.setFieldValue('trade_type', 'sell')
     }
     const buyTrade = ()=> {
         setTradeType('buy')
+        formik.setFieldValue('trade_type', 'buy')
     }
-
     const openTrade = props.show;
     // const handleCurrency = (value) => {
     //     setCurrency(value)
     //     console.log(currency)
     // }
-    const successToast = useToast();
-    // const failedToast = useToast();
+    // const successToast = useToast();
+    const failedToast = useToast();
     const formik = useFormik({
         initialValues: {
+            trade_type: `${tradeType}`,
             currency: '',
             amount: '',
-            // equivalent: '',
+            naira_equivalent: `${naira}`,
             email: ''
         },
         validationSchema: yup.object({
@@ -50,20 +58,46 @@ export default function Trade(props) {
                         .email()
         }),
         onSubmit: function (values, {resetForm}) {
-            console.log(values, 'submit')
-            successToast({
-                title: ' Trade Request Submitted.',
-                description: "Your Trade will be processed.",
-                status: 'success',
+            setisLoading(true)
+           axios.post('https://sulah-api.herokuapp.com/api/requestTrade', values)
+           .then(function(response){
+            setisLoading(false)
+            resetForm();  
+            setNaira('0')
+            props.onClick();
+            onOpen();
+           })
+           .catch(function(error){
+           if(error){
+            failedToast({
+                title: 'Request Failed.',
+                description: "Please try again.",
+                status: 'error',
                 duration: 9000,
                 isClosable: true,
-              });
-              props.onClick();
-              onOpen();
-              resetForm();
+              })
+           }
+           }) 
+          
         }
     })
 
+    const currency = formik.values.currency;
+    const amount = formik.values.amount;
+useEffect(() => {
+    rates.map(rate => {
+        if (rate.abbreviation === currency && tradeType === 'buy'){
+            const buyExchange = rate.sell_rate * amount;
+            setNaira(buyExchange)
+            formik.setFieldValue('naira_equivalent', naira)
+        } else if (rate.abbreviation === currency && tradeType === 'sell'){
+            const sellExchange = rate.buy_rate * amount;
+            setNaira(sellExchange)
+            formik.setFieldValue('naira_equivalent', naira)
+        } 
+        return rate
+    })
+}, [amount, currency, rates, tradeType])
 
   return (
     <>
@@ -105,7 +139,7 @@ export default function Trade(props) {
             <InputGroup>
             <label htmlFor="naira">Naira Equivalent</label>
             <div className="naira-input">
-            <span>₦ 1,420,425.00</span>
+            <span>₦ {naira}</span>
             </div>
             </InputGroup>
             <InputGroup>
@@ -125,7 +159,7 @@ export default function Trade(props) {
             </InputGroup>
         </TradeWrapper>
         <div className="trade-btn">
-        {/* {isLoading && <Loader />} */}
+        {isLoading && <Loading />}
         <StyledButtons type="submit" className={colorMode}> Trade Now </StyledButtons>
         </div>
      </TradeForm>

@@ -10,6 +10,7 @@ import Locate from '../components/Locate'
 import Contact from '../components/Contact'
 import MobileHeader from '../components/MobileHeader'
 import Trade from '../components/Trade'
+import Warning from '../components/Warning'
 
 function Landing() {
   const [openMenu, setOpenMenu] = useState(false)
@@ -43,6 +44,7 @@ function Landing() {
      <Benefits  openTrade={handleOpenTrade} style={openTrade ? {opacity: '0.3'} : {opacity: '1'} } />
      <Locate style={openTrade ? {opacity: '0.3'} : {opacity: '1'} } />
      <Contact  style={openTrade ? {opacity: '0.3'} : {opacity: '1'} }/>
+     <Warning style={openTrade ? {opacity: '0.3'} : {opacity: '1'} }/>
     </LandingPage>
   
   )

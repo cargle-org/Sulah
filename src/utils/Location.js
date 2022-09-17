@@ -85,7 +85,7 @@
   {
     src : `${cardImg}`,
     title: 'Local Airport Abuja',
-    address: 'Local Airport AbujaNigeria',
+    address: 'Local Airport Abuja, Nigeria',
     phone : '0815 064 6739, 0807 759 3664',
     hours: '24 Hrs',
     days: 'Monday to Sunday',
@@ -117,5 +117,5 @@
     hours: '24 Hrs',
     days: 'Monday to Friday',
     time: '8am to 8am'
-  },
+  }
 ]

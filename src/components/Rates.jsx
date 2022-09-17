@@ -1,23 +1,28 @@
-import React, { useState} from 'react'
+import React, { useState,  useContext} from 'react'
 import { RatesStyles } from '../atoms/styled-pages'
-import Britain from '../assets/images/Britain.png'
-import Canada from '../assets/images/Canada.png'
-import Japan from '../assets/images/Japan.png'
-import Nigeria from '../assets/images/Nigeria.png'
-import USA from '../assets/images/USA.png'
-import Euro from '../assets/images/Euro.png'
+// import Britain from '../assets/images/Britain.png'
+// import Canada from '../assets/images/Canada.png'
+// import Japan from '../assets/images/Japan.png'
+// import Nigeria from '../assets/images/Nigeria.png'
+// import USA from '../assets/images/USA.png'
+// import Euro from '../assets/images/Euro.png'
 import miniClock from '../assets/svg/mini-clock.svg'
+import RatesContext from '../context/RatesProvider'
+import RatesRow from './RatesRow'
+import Loading from './Loading'
+import { StyledButtonLinks } from '../atoms/styled-buttons'
+import { useColorMode} from '@chakra-ui/react'
 
 function Rates(props) {
+    const {colorMode} = useColorMode()
     const [brandRates, setBrandRates] = useState(true);
-
+    const { rates, loading, updatedAt} = useContext(RatesContext);
     const handleRates = () =>{
         setBrandRates(true)
     }
     const handleCBNRates = () =>{
         setBrandRates(false)
     }
-
   return (
     <RatesStyles style={props.style}>
         <div className="rates-wrapper">
@@ -33,7 +38,9 @@ function Rates(props) {
                         CBN Rates
                     </h2>
                 </div>
-               {brandRates ? 
+               {brandRates ?
+                    <>
+                    {loading ? <Loading /> :
                 <table>
                 <thead>
                     <tr>
@@ -43,76 +50,20 @@ function Rates(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className='currency-row'>
-                        <div className="flag">
-                <img src={USA} alt="flag" />
-             </div>
-                            <p>US DOLLAR <b>USD</b></p>
-                        </td>
-                        <td>423</td>
-                        <td>427</td>
-                    </tr>
-                    <tr>
-                        <td className='currency-row'>
-                        <div className="flag">
-                <img src={Britain} alt="flag" />
-            </div>
-                            <p>BRITISH POUNDS <b>GBP</b></p>
-                        </td>
-                        <td>823</td>
-                        <td>832</td>
-                    </tr>
-                    <tr>
-                        <td className='currency-row'>
-                            <div className="flag">
-            <img src={Euro} alt="flag" />
-            </div>
-                            <p>EURO <b>EUR</b></p>
-                        </td>
-                        <td>674</td>
-                        <td>685</td>
-                    </tr>
-                    <tr>
-                        <td className='currency-row'>
-                        <div className="flag"> 
-            <img src={Japan} alt="flag" />
-            </div>
-                            <p>JAPANESE YEN <b>JPY</b></p>
-                        </td>
-                        <td>3</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td className='currency-row'>
-                        <div className="flag">
-            <img src={Canada} alt="flag" />
-            </div>
-                            <p>CANADIAN DOLLAR <b>CAD</b></p>
-                        </td>
-                        <td>587</td>
-                        <td>602</td>
-                    </tr>
-                    <tr>
-                        <td className='currency-row'>
-                        <div className="flag">
-            <img src={Nigeria} alt="flag" />
-            </div>
-                            <p>NAIRA <b>NGN</b></p>
-                        </td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                   {rates.map((rate, index) => 
+                   <RatesRow key={index} name={rate.name.toUpperCase()} abbreviation={rate.abbreviation}  buy={rate.buy_rate} sell={rate.sell_rate} />)}
                 </tbody>
-            </table> :
+            </table> }
+                </> :
             <div className="cbn-rates">
-                <h1>Coming Soon...</h1>
+                <h1>Check out today's CBN Rates </h1>
+                <StyledButtonLinks className={colorMode} href='https://www.cbn.gov.ng/rates/exchratebycurrency.asp' target='_blank'> here</StyledButtonLinks>
             </div>
             }
             </div>
             <div className="updated-time">
                 <img src={miniClock} alt="icon" />
-                <h4>This Table was Last updated by <b>3pm</b></h4>
+                <h4>This Table was Last updated at <b>{updatedAt}</b></h4>
             </div>
         </div>
 

@@ -549,15 +549,21 @@ border-bottom: 2px solid #F2E0E1;
         }
        
         .cbn-rates{
-            height: 40vh;
+            padding: 0 1rem;
+            height: 20vh;
             width: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             h1{
-                font-size: 2rem;
+                font-size: 1.5rem;
                 font-weight: 700;
-                text-transform: uppercase;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+            a{
+                font-size: 1rem;
             }
         }
     }
@@ -779,13 +785,20 @@ export const AboutStyles= styled.div`
     width: 60%;
     text-align: center;
     p{
-        width: 70%;
+        width: 90%;
         margin: 1rem auto;
     }
     .about-content-heading{
-        font-size: 1.5rem;
-        font-weight: 600;
+        font-size: 1.7rem;
+        font-weight: 700;
         margin: 1.5rem 0;
+    }
+    .about-content-info{
+        text-align: justify;
+        a{
+            text-decoration: underline;
+            cursor: pointer;
+        }
     }
     .about-button-group{
         width: fit-content;
@@ -849,6 +862,9 @@ export const AboutStyles= styled.div`
 @media (max-width: 560px){
     .about-content{
         width: 90%;
+        .about-content-info{
+            width: 100%
+        }
     } 
 }
 @media (max-width: 430px){
@@ -899,6 +915,7 @@ h1{
     border-radius: 50px;
     margin: 0 auto;
     color: black;
+    text-align: center;
 }
 .benefit-card-group{
     max-width: 1300px;
@@ -1650,6 +1667,11 @@ border-bottom: 1px solid #DEE6E2;
     padding: 1rem 0;
     text-align: center;
     border-top: 1px solid #DEE6E2;
+    div{
+        img{
+            width: 40px;
+        }
+    }
     button{
         width: fit-content;
         margin: 0 auto;
@@ -1830,4 +1852,123 @@ border-bottom: 1px solid #DBDBDB;
     margin: 0 auto;
     padding-bottom: .5rem;
  }
+`
+
+export const WarningContainer = styled.section`
+width: 100%;
+position: fixed;
+bottom: 0;
+opacity: 0.9;
+padding: 1rem 6rem;
+&.hide{
+    display: none;
+}
+
+&.light{
+ background: rgba(27, 146, 96, 0.5);
+}
+&.dark{
+ background: rgba(224, 68, 71, 0.5);
+}
+@media (max-width: 990px){
+    padding: 1rem 4rem;
+}
+@media (max-width: 768px){
+    padding: 1rem 2rem;
+}
+@media (max-width: 500px){
+    padding: 1rem ;
+}
+`
+
+export const WarningWrapper = styled.div`{
+max-width: 1300px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+color: white;
+margin: 1rem auto;
+.left{
+    margin-right: 1rem;
+    h2{
+        font-weight: 800;
+        span{
+            font-size: 1.2rem;
+            color: yellow;
+        }
+    }
+    p{
+        font-size: .8rem;
+        a{
+            font-size: .7rem;
+            text-decoration: underline;
+        }
+    }
+}
+.right{
+    button{
+        font-weight: 700;
+        &.light{
+            background: rgba(27, 146, 96, 1);
+           }
+           &.dark{
+            background: rgba(224, 68, 71, 1);
+           }
+    }
+}
+}`
+
+export const PrivacyContainer = styled.main`
+padding: 1rem 6rem;
+media (max-width: 990px){
+    padding: 1rem 4rem;
+}
+@media (max-width: 768px){
+    padding: 1rem 2rem;
+}
+@media (max-width: 500px){
+    padding: 1rem ;
+}
+`
+
+export const PrivacyWrapper = styled.section`
+max-width: 900px;
+margin: 1rem auto;
+color: black;
+line-height: 2;
+a{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    img{
+        margin-right: .5rem;
+    }
+}
+
+h1{
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+div{
+    text-align: justify;
+    margin-bottom: 3rem;
+    h2{
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+    a{
+        display: inline;
+        text-decoration: underline;
+        color: gray;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    span{
+        font-weight: 700;
+    }
+}
 `

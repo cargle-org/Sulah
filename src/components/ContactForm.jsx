@@ -6,9 +6,11 @@ import { StyledButtons } from "../atoms/styled-buttons"
 import { useFormik } from 'formik'
 import * as yup from 'yup';
 import { useToast } from '@chakra-ui/react'
+import axios from 'axios'
 
 function ContactForm() {
     const successToast = useToast();
+    const failedToast = useToast();
 
     const formik = useFormik({
         initialValues: {
@@ -30,14 +32,28 @@ function ContactForm() {
         }),
 
         onSubmit: function(values, {resetForm}) {
-            console.log(values)
-            successToast({
-                title: ' Message Submitted',
-                description: "We will get back to you shortly.",
-                status: 'success',
-                duration: 9000,
-                isClosable: true,
-              });
+
+            axios.post('https://sulah-api.herokuapp.com/api/contact', values)
+            .then(function(response){
+                successToast({
+                    title: ' Message Submitted',
+                    description: "We will get back to you shortly.",
+                    status: 'success',
+                    duration: 9000,
+                    isClosable: true,
+                  });
+            })
+            .catch(function(error){
+                if(error){
+                    failedToast({
+                        title: 'Request Failed.',
+                        description: "Please try again.",
+                        status: 'error',
+                        duration: 9000,
+                        isClosable: true,
+                      })
+                   }
+            })
               resetForm();
         }
     })

@@ -1,1 +1,1 @@
-export { StyledButtons, StyledButtonLinks } from './index.styled'
+export { StyledButtons, StyledButtonLinks, Loader } from './index.styled'

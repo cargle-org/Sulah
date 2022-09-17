@@ -45,4 +45,7 @@ export const StyledButtonLinks = styled.a`
                 fill: white;
             }
 `
-
+export const Loader = styled.div`
+width: fit-content;
+margin: 1rem auto;
+`
