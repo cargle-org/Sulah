@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { HeroStyles } from '../atoms/styled-pages'
 import { useColorMode} from '@chakra-ui/react'
 import ArrowIcon from './ArrowIcon'
-import { StyledButtons } from '../atoms/styled-buttons'
+import { StyledButtonLinks, StyledButtons } from '../atoms/styled-buttons'
 import redLogo from '../assets/svg/redLogo.svg'
 import greenLogo from '../assets/svg/greenLogo.svg'
 import Britain from '../assets/images/Britain.png'
@@ -85,7 +85,7 @@ useEffect(() => {
                 </div>
             <div className="hl-buttons">
                 <StyledButtons onClick={props.openTrade} className={colorMode === 'light' ? 'light-btn' : 'dark-btn'}>TRADE NOW <ArrowIcon fill='white' /> </StyledButtons>
-                <StyledButtons  className={colorMode === 'light' ? 'default-light-btn' : 'default-dark-btn'}>HOW IT WORKS <ArrowIcon fill="black"/></StyledButtons>
+                <StyledButtonLinks  href='#rates' className={colorMode === 'light' ? 'default-light-btn' : 'default-dark-btn'}>HOW IT WORKS <ArrowIcon fill="black"/></StyledButtonLinks>
             </div>
         </div>
         <div className="hero-right">

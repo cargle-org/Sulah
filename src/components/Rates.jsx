@@ -26,7 +26,7 @@ function Rates(props) {
 
     
   return (
-    <RatesStyles style={props.style}>
+    <RatesStyles style={props.style} id='rates'>
         <div className="rates-wrapper">
             <h2>
                 Rates Table

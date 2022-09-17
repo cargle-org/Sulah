@@ -109,14 +109,14 @@ position: relative;
             .hl-buttons{
                 display: flex;
                 margin: 2rem 0;
-                button{
+                align-items: center;
+                button, a{
                     display: flex;
                     align-items: center;
                     border-radius: 50px;
                     padding: .6rem 1.5rem;
                         font-weight: 500;
                         font-size: .9rem;
-                        letter-spacing: 1.2px;
                         svg{
                             width: 12px;
                             height: 12px;
@@ -149,6 +149,7 @@ position: relative;
                     }
                 }
                 .default-dark-btn{
+                  
                     background-color: #A1272E;
                     color: white;
                     border: 1px solid white;
@@ -244,7 +245,7 @@ position: relative;
                 font-size: 2.5rem;
                 }
                 .hl-buttons{
-                    button{
+                    button, a{
                         font-size: .7rem;
                     }
                 }
@@ -381,7 +382,7 @@ position: relative;
                 .hl-buttons{
                     width: 100%;
                     flex-wrap: wrap;
-                    button{
+                    button, a{
                         margin-top: 1rem;
                     }
                     .default-dark-btn{
@@ -832,13 +833,20 @@ export const AboutStyles= styled.div`
                     }
             }
             .default-light-btn{
+                font-size: .9rem;
                 background-color: white;
                 color: black;
                 border: 1px solid #12613F;
                 box-shadow: 0px 4px 10px 5px rgba(0, 0, 0, 0.05);
                 margin-left: 1rem;
+                svg{
+                    path{
+                        fill: black;
+                    }
+                }
             }
             .default-dark-btn{
+                font-size: .9rem;
                 background-color: #A1272E;
                 color: white;
                 border: 1px solid white;

@@ -1,6 +1,6 @@
 import { AboutStyles } from '../atoms/styled-pages'
 import { useColorMode } from '@chakra-ui/react'
-import { StyledButtons } from '../atoms/styled-buttons'
+import { StyledButtons, StyledButtonLinks } from '../atoms/styled-buttons'
 import ArrowIcon from './ArrowIcon'
 
 function About(props) {
@@ -21,7 +21,7 @@ function About(props) {
         </p>
         <div className="about-button-group">
         <StyledButtons onClick={props.openTrade} className={colorMode === 'light' ? 'light-btn' : 'dark-btn'}>TRADE NOW <ArrowIcon fill='white' /> </StyledButtons>
-         <StyledButtons  className={colorMode === 'light' ? 'default-light-btn' : 'default-dark-btn'}>HOW IT WORKS <ArrowIcon fill="black" /></StyledButtons>
+         <StyledButtonLinks href='#rates' className={colorMode === 'light' ? 'default-light-btn' : 'default-dark-btn'}>HOW IT WORKS <ArrowIcon fill="black" /></StyledButtonLinks>
         </div>
     </div>
    </AboutStyles>
