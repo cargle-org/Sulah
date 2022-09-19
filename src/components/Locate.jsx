@@ -73,7 +73,7 @@ function Locate(props) {
                 <div className="first">
                <div className="find-location-text">
                <h2>Looking for a Sullah BDC office ?</h2>
-                <p>Check out our locations and find the one closest to you</p>
+                <p>Check out our locations and find the one closest to you.</p>
                 <StyledButtons className={colorMode} onClick={handleLocationView}>
                     FIND NOW <ArrowIcon />
                 </StyledButtons>

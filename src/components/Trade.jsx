@@ -38,6 +38,8 @@ export default function Trade(props) {
     // }
     // const successToast = useToast();
     const failedToast = useToast();
+    let currencyFormatter = Intl.NumberFormat('en-US');
+   
     const formik = useFormik({
         initialValues: {
             trade_type: `${tradeType}`,
@@ -50,7 +52,7 @@ export default function Trade(props) {
             currency: yup.string()
                         .label('Currency') 
                         .required(),
-            amount: yup.number()
+            amount: yup.string()
                         .label('Amount')  
                         .required(),
             email: yup.string()
@@ -81,23 +83,23 @@ export default function Trade(props) {
           
         }
     })
-
     const currency = formik.values.currency;
-    const amount = formik.values.amount;
+    const amount = formik.values.amount.replace(',', '');
+    
 useEffect(() => {
     rates.map(rate => {
         if (rate.abbreviation === currency && tradeType === 'buy'){
-            const buyExchange = rate.sell_rate * amount;
+            const buyExchange = rate.sell_rate * Number(amount);
             setNaira(buyExchange)
             formik.setFieldValue('naira_equivalent', naira)
         } else if (rate.abbreviation === currency && tradeType === 'sell'){
-            const sellExchange = rate.buy_rate * amount;
+            const sellExchange = rate.buy_rate *  Number(amount);
             setNaira(sellExchange)
             formik.setFieldValue('naira_equivalent', naira)
         } 
         return rate
     })
-}, [amount, currency, rates, tradeType, naira])
+}, [amount, currency, rates, tradeType, naira]);
 
   return (
     <>
@@ -116,19 +118,13 @@ useEffect(() => {
         </TradeType>
         <TradeForm onSubmit={formik.handleSubmit}>
         <TradeWrapper>
-            <InputGroup>
-            <label htmlFor="currency">Pick Currency</label>
-            <SelectCurrency formik={formik} className={formik.touched.currency && formik.errors.currency ? 'error' : ''} />
-            {formik.touched.currency && formik.errors.currency && (
-               <small className='errorText'>{formik.errors.currency}</small>)}
-            </InputGroup>
-            <InputGroup>
+        <InputGroup>
             <label htmlFor="amount">Enter Amount</label>
             <div className="input">
                 <input 
                 className={formik.touched.amount && formik.errors.amount ? 'error' : ''}
-                onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.amount}
-                type="number"
+                onChange={formik.handleChange} onBlur={formik.handleBlur} value={currencyFormatter.format(amount)}
+                type="text"
                 name="amount"
                 id="amount"
                  />
@@ -137,9 +133,15 @@ useEffect(() => {
                <small className='errorText'>{formik.errors.amount}</small>)}
             </InputGroup>
             <InputGroup>
+            <label htmlFor="currency">Pick Currency</label>
+            <SelectCurrency formik={formik} className={formik.touched.currency && formik.errors.currency ? 'error' : ''} />
+            {formik.touched.currency && formik.errors.currency && (
+               <small className='errorText'>{formik.errors.currency}</small>)}
+            </InputGroup>
+            <InputGroup>
             <label htmlFor="naira">Naira Equivalent</label>
             <div className="naira-input">
-            <span>₦ {naira}</span>
+            <span>₦ {currencyFormatter.format(naira)}</span>
             </div>
             </InputGroup>
             <InputGroup>

@@ -10,11 +10,9 @@ function About(props) {
    <AboutStyles className={colorMode} id='about' style={props.style} >
     <h1 className='section' id='about'>About us</h1>
     <div className="about-content">
-        <h3 className="about-content-heading">
-        Sulah Bureau De Change Ltd is 
-        a registered company with RC number 567667
-        </h3>
         <p className="about-content-info">
+        Sulah Bureau De Change Ltd is 
+        a registered company with RC number 567667.
         It is licensed by the Central Bank of Nigeria to provide foreign exchange services.
         The company operates out of its head office at  
         86, Allen avenue, Ikeja, Lagos where it provides foreign exchange services to  both corporates and individuals.<br/> Check our privacy and policy page to learn more about our policies, terms and conditions. <a href='/privacy-policy' target='_blank'> Learn more</a>

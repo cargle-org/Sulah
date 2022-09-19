@@ -41,7 +41,7 @@ function Benefits(props) {
         <div className="card-content">
             <h2>Make Foreign Payments
             with ease</h2>
-            <p>At Sulah Berue de Cgange, we help you effectively manage and process your international payments whenever the need arises</p>
+            <p>At Sulah Bureau de Change, we help you effectively manage and process your international payments whenever the need arises.</p>
         </div>
         <StyledButtons onClick={props.openTrade} className={colorMode === 'light' ? 'light-btn' : 'dark-btn'}>TRADE NOW <ArrowIcon fill='white' /> </StyledButtons>
     </div>

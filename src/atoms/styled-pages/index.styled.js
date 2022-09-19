@@ -786,13 +786,8 @@ export const AboutStyles= styled.div`
     width: 60%;
     text-align: center;
     p{
-        width: 90%;
+        width: 80%;
         margin: 1rem auto;
-    }
-    .about-content-heading{
-        font-size: 1.7rem;
-        font-weight: 700;
-        margin: 1.5rem 0;
     }
     .about-content-info{
         text-align: justify;
